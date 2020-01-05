@@ -183,7 +183,7 @@ def smtpEnum(ip_address, port):
 def smbNmap(ip_address, port):
     print "INFO: Detected SMB on " + ip_address + ":" + port
     smbNmap = "nmap --script-args=unsafe=1 --script-args=vulns.showall --script=smb-enum-shares,smb-ls,smb-enum-users,smb-mbenum,smb-os-discovery,smb-security-mode,smb-vuln-cve2009-3103,smb-vuln-ms06-025,smb-vuln-ms07-029,smb-vuln-ms08-067,smb-vuln-ms10-054,smb-vuln-ms10-061,smb-vuln-regsvc-dos %s -oN ../reports/%s/smb_%s.nmap" % (ip_address, ip_address, ip_address)
-    smbNmap_results = subprocess.check_output(smbNmap, shell=True)
+    smbNmap_results = subprocess.check_output(SMBNMAP, shell=True)
     print bcolors.OKGREEN + "INFO: RESULT BELOW - Finished with SMB-Nmap-scan for " + ip_address + bcolors.ENDC
     print smbNmap_results
     return
@@ -191,7 +191,7 @@ def smbNmap(ip_address, port):
 def smbEnum(ip_address, port):
     print "INFO: Detected SMB on " + ip_address + ":" + port
     enum4linux = "enum4linux -a %s > ../reports/%s/enum4linux_%s 2>/dev/null" % (ip_address, ip_address, ip_address)
-    enum4linux_results = subprocess.check_output(enum4linux, shell=True)
+    enum4linux_results = subprocess.check_output(ENUM4LINUX, shell=True)
     print bcolors.OKGREEN + "INFO: CHECK FILE - Finished with ENUM4LINUX-Nmap-scan for " + ip_address + bcolors.ENDC
     print enum4linux_results
     return
