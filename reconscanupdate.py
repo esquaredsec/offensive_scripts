@@ -134,7 +134,6 @@ def httpEnum(ip_address, port):
     http_results = subprocess.check_output(HTTPSCAN, shell=True)
     print bcolors.OKGREEN + "INFO: RESULT BELOW - Finished with HTTP-SCAN for " + ip_address + bcolors.ENDC
     print http_results
-
     return
 
 def httpsEnum(ip_address, port):
@@ -216,6 +215,8 @@ def udpScan(ip_address):
     UNICORNSCAN = "unicornscan -mU -I %s > ../reports/%s/unicorn_udp_%s.txt" % (ip_address, ip_address, ip_address)
     unicornscan_results = subprocess.check_output(UNICORNSCAN, shell=True)
     print bcolors.OKGREEN + "INFO: CHECK FILE - Finished with UNICORNSCAN for " + ip_address + bcolors.ENDC
+    print results_udp
+    return
 
 def sshScan(ip_address, port):
     print bcolors.HEADER + "INFO: Detected SSH on " + ip_address + ":" + port  + bcolors.ENDC
