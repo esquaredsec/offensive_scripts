@@ -62,7 +62,7 @@ def connect_to_port(ip_address, port, service):
         password = s.recv(1024)
         total_communication = banner +  user +  password
         write_to_file(ip_address, "pop3-connect", total_communication)
-    s.close()
+        s.close()
 
 
 
